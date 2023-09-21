@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import logo from './logo.svg'
+import './App.css'
+import Nav from './Components/ResponsiveBar'
+import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
+import Footer from './Components/Footer'
+import ShowList from './Components/ShowList'
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'light' // or 'dark'
+  }
+})
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ChakraProvider>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <Nav />
+      <ShowList />
+      <Footer />
+    </ChakraProvider>
+  )
 }
 
-export default App;
+export default App
